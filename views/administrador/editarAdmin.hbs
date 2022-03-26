@@ -1,0 +1,22 @@
+<h1>Editar adminstrador: {{admin.nome}}</h1>
+
+<form action="/administrador/editarAdminPost" method="POST">
+<input type="hidden" name="id" value="{{admin._id}}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" value="{{admin.nome}}">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="e-mail" name="email" class="form-control" id="email" placeholder="E-mail" value="{{admin.email}}">
+    </div>
+  </div>
+  <label for="senha">Senha: </label>  
+        <input type="password" name="senha" class="form-control" required>
+  <label for="senha2">Repita a senha: </label>
+        <input type="password" name="senha2" class="form-control" required>
+  <button type="submit" class="btn btn-primary">Editar</button>
+  </div>
+  
+</form>

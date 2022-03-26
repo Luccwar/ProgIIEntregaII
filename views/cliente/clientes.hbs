@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shoppe - Lista de Clientes</title>
+</head>
+<body>
+    {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Pet Shoppe</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar" aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="textoNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                <a class="nav-link" href="/">Página Principal<span class="sr-only">(Página atual)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/listaAnimais">Lista de Animais Disponíveis</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/listaBrinquedos">Lista de Brinquedos Disponíveis</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/listaHigiene">Lista de Produtos de Higiene Disponíveis</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/cadastroCliente">Cadastre-se Agora!</a>
+                </li>
+                
+            </ul>
+            </div>
+        </nav>
+    </header> --}}
+<h1>Lista de Clientes: </h1>
+<a href= "/cadastroCliente"><button class="btn btn-primary">Cadastrar</button></a><br>
+<hr>
+{{#each clientes}}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+                <label for="nome">Nome: </label>
+                <p class="alert alert-secondary" >{{this.nome}}</p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="sobrenome">Sobrenome: </label>
+                <p class="alert alert-secondary" >{{this.sobrenome}}</p>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="email">Email: </label>
+                <p class="alert alert-secondary" >{{this.email}}</p>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone: </label>
+                <p class="alert alert-secondary" >{{this.telefone}}</p>
+            </div>
+        </div>
+            {{!-- <div class="form-group col-md-6">
+                <label for="data">Data de Criação: </label>
+                <p class="alert alert-secondary" > {{#formatDate dataValues.createAt}}{{/formatDate}}</p>
+            </div> --}}
+        <div class="form-group">
+
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <form action="/editarCliente" method="post">
+                    <input type="hidden" name="id", value="{{_id}}">
+                    <button class="btn btn-primary">Editar</button></a> 
+                </form>  
+            </div>
+            <div class="form-group col-md-1">
+                <form action="/deletarCliente" method="post">
+                    <input type="hidden" name="id", value="{{_id}}">
+                    <button class="btn btn-danger">Deletar</button></a>     
+                </form>
+            </div>
+        </div>
+                <!--<a href= "/alunos/editarAluno/{{_id}}"><button class="btn btn-primary">Editar</button></a>-->
+            {{!-- <a href= "/deletarCliente/{{dataValues.id}}"><button class="btn btn-danger">Deletar</button></a>
+            <a href= "/editarCliente/{{dataValues.id}}"><button class="btn btn-success">Editar</button></a> --}}
+        </div>
+    <hr>
+{{else}}
+    <h5>Nenhum cadastro</h5>
+{{/each}}
+</body>

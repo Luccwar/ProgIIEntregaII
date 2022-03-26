@@ -1,0 +1,56 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+{{#each acertos}}
+    <div class="alert alert-success">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+{{/each}}
+<h1>Lista de Administradores: </h1>
+<a href= "/administrador/registro"><button class="btn btn-primary">Cadastrar</button></a><br>
+<hr>
+{{#each admin}}  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="nome">Nome: </label>
+      <p class="alert alert-secondary">{{this.nome}}</p>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <p class="alert alert-secondary" >{{this.email}} </p>
+    </div>
+        <div class="form-group col-md-6">
+      <label for="senha">Senha</label>
+      <p class="alert alert-secondary" >{{this.senha}} </p>
+    </div>
+</div>
+  <div class="form-group">
+
+        <div class="form-row">
+          <div class="form-group col-md-1">
+            <form action="/administrador/editarAdmin/" method="post">
+              <input type="hidden" name="id", value="{{_id}}">
+              <button class="btn btn-primary">Editar</button></a> 
+            </form>  
+          </div>
+            <div class="form-group col-md-1">
+              <form action="/administrador/deletarAdmin/" method="post">
+                <input type="hidden" name="id", value="{{_id}}">
+                <button class="btn btn-danger">Deletar</button></a>     
+              </form>
+            </div>
+        </div>
+      
+  </div>
+
+
+
+
+
+
+  <hr>
+{{else}}
+    <h5>Nenhum Administrador cadastro</h5>
+{{/each}}
